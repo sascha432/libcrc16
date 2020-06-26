@@ -1,0 +1,13 @@
+{
+    "name": "libcrc16",
+    "description": "crc16 based on avr-libc",
+    "version": "1.0.0",
+    "authors":
+    {
+      "name": "sascha lammers",
+      "email": "sascha_lammers@gmx.de",
+      "maintainer": true
+    },
+    "frameworks": "arduino",
+    "platforms": ["atmelavr", "espressif8266", "espressif32"]
+}
