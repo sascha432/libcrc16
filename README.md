@@ -29,3 +29,11 @@ uint16_t crc16_update(const void *data, size_t len);
 // platform based implementation
 inline uint16_t _crc16_update(uint16_t crc, uint8_t data);
 ```
+
+## Recursive constexpr
+
+```
+constexpr uint16_t constexpr_crc16_update(uint16_t crc, int i);
+constexpr uint16_t constexpr_crc16_update(uint16_t crc, const char/uint8_t *data, size_t len);
+constexpr uint16_t constexpr_crc16_update(const char/uint8_t *data, size_t len);
+```

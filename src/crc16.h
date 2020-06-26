@@ -34,3 +34,21 @@ inline uint16_t crc16_update(const void *data, size_t len)
 {
     return crc16_update(~0, data, len);
 }
+
+
+constexpr uint16_t constexpr_crc16_update(uint16_t crc, int i)
+{
+    return i < 8 ? constexpr_crc16_update((crc & 1) ? ((crc >> 1) ^ 0xa001) : (crc >> 1), i + 1) : crc;
+}
+
+template<typename T>
+constexpr uint16_t constexpr_crc16_update(uint16_t crc, const T *data, size_t len)
+{
+    return len == 0 ? crc : constexpr_crc16_update(constexpr_crc16_update(crc ^ *data, 0), data + 1, len - 1);
+}
+
+template<typename T>
+constexpr uint16_t constexpr_crc16_update(const T *data, size_t len)
+{
+    return constexpr_crc16_update(~0, data, len);
+}

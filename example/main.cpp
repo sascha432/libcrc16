@@ -12,6 +12,8 @@ void setup()
     auto text1 = PSTR("The quick brown fox jumps over the lazy dog");
     char text[strlen_P(text1) + 1];
 
+    constexpr uint16_t crc4 = constexpr_crc16_update("The quick brown fox jumps over the lazy dog", 43);
+
     Serial.begin(115200);
 
     strcpy_P(text, text1);
@@ -36,7 +38,7 @@ void setup()
         crc = crc16_update(crc, ' ');
     }
 
-    snprintf_P(buf, sizeof(buf), PSTR(": %04x %04x %04x\n"), crc2, crc3, crc);
+    snprintf_P(buf, sizeof(buf), PSTR(": %04x %04x %04x %04x\n"), crc2, crc3, crc, crc4);
     Serial.println(buf);
 }
 
