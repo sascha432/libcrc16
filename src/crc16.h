@@ -5,6 +5,8 @@
 #pragma once
 
 #include <Arduino.h>
+#include <stdint.h>
+#include <stddef.h>
 
 #if __AVR__
 
@@ -44,7 +46,7 @@ constexpr uint16_t constexpr_crc16_update(uint16_t crc, int i)
 template<typename T>
 constexpr uint16_t constexpr_crc16_update(uint16_t crc, const T *data, size_t len)
 {
-    return len == 0 ? crc : constexpr_crc16_update(constexpr_crc16_update(crc ^ *data, 0), data + 1, len - 1);
+    return len == 0 ? crc : constexpr_crc16_update(constexpr_crc16_update(crc ^ (uint8_t)*data, 0), data + 1, len - 1);
 }
 
 template<typename T>
