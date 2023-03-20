@@ -17,5 +17,6 @@
     "platforms": ["atmelavr", "espressif8266", "espressif32"],
     "build": {
       "includeDir": "src"
-    }
+    },
+    "headers": ["crc16.h"]
 }
