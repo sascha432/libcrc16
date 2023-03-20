@@ -3,5 +3,12 @@
 		{
 			"path": "."
 		}
-	]
+	],
+	"settings": {
+		"workbench.colorCustomizations": {
+			"activityBar.background": "#06304E",
+			"titleBar.activeBackground": "#09436D",
+			"titleBar.activeForeground": "#F9FCFF"
+		}
+	}
 }
