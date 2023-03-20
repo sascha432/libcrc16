@@ -38,7 +38,9 @@ void setup()
         crc = crc16_update(crc, ' ');
     }
 
-    snprintf_P(buf, sizeof(buf), PSTR(": %04x %04x %04x %04x\n"), crc2, crc3, crc, crc4);
+    uint16_t crc5 = crc16_update_P(text1, strlen_P(text1));
+
+    snprintf_P(buf, sizeof(buf), PSTR(": %04x %04x %04x %04x %04x\n"), crc2, crc3, crc, crc4, crc5);
     Serial.println(buf);
 }
 

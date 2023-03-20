@@ -4,16 +4,9 @@
 
 #include "crc16.h"
 
-#if __AVR__
+#if !CRC16_UPDATE_INLINED
 
-uint16_t crc16_update(uint16_t crc, uint8_t a)
-{
-    return _crc16_update(crc, a);
-}
-
-#else
-
-uint16_t crc16_update(uint16_t crc, uint8_t data)
+uint16_t __crc16_update(uint16_t crc, uint8_t data)
 {
     crc ^= data;
     for (uint8_t i = 0; i < 8; ++i) {
@@ -31,7 +24,16 @@ uint16_t crc16_update(uint16_t crc, uint8_t data)
 uint16_t _crc16_update(uint16_t crc, const uint8_t *data, size_t len)
 {
     while(len--) {
-        crc = crc16_update(crc, *data++);
+        crc = _crc16_update(crc, *data++);
+    }
+    return crc;
+}
+
+uint16_t _crc16_update_P(uint16_t crc, const uint8_t *data, size_t len)
+{
+    while(len--) {
+        crc = _crc16_update(crc, pgm_read_byte(data));
+        data++;
     }
     return crc;
 }
