@@ -20,20 +20,3 @@ uint16_t __crc16_update(uint16_t crc, uint8_t data)
 }
 
 #endif
-
-uint16_t _crc16_update(uint16_t crc, const uint8_t *data, size_t len)
-{
-    while(len--) {
-        crc = _crc16_update(crc, *data++);
-    }
-    return crc;
-}
-
-uint16_t _crc16_update_P(uint16_t crc, const uint8_t *data, size_t len)
-{
-    while(len--) {
-        crc = _crc16_update(crc, pgm_read_byte(data));
-        data++;
-    }
-    return crc;
-}
