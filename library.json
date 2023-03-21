@@ -14,6 +14,7 @@
       "url": "https://github.com/sascha432/libcrc16.git"
     },
     "frameworks": "arduino",
+    "platforms": ["atmelavr", "espressif8266", "espressif32"],
     "build": {
       "includeDir": "src",
       "libArchive": true
