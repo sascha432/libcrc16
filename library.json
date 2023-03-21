@@ -1,7 +1,7 @@
 {
     "name": "libcrc16",
     "description": "crc16 based on avr-libc",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "authors": [
       {
         "name": "sascha lammers",
@@ -14,7 +14,6 @@
       "url": "https://github.com/sascha432/libcrc16.git"
     },
     "frameworks": "arduino",
-    "platforms": ["atmelavr", "espressif8266", "espressif32"],
     "build": {
       "includeDir": "src",
       "libArchive": true
